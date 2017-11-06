@@ -15,7 +15,8 @@ script:
   - go build .
   - ./test.sh
   - mkdir -p reports
-  - go test -v -coverprofile=reports/coverage-foo.coverprofile -covermode=count github.com/devfacet/gostorage/foo
+  - go test -v -coverprofile=reports/coverage-local.coverprofile -covermode=count github.com/devfacet/gostorage/drivers/local
+  - go test -v -coverprofile=reports/coverage-gostorge.coverprofile -covermode=count github.com/devfacet/gostorage
   - gover reports/ reports/coverage-all.coverprofile
   - go tool cover -func=reports/coverage-all.coverprofile
   - goveralls -service=travis-ci -repotoken $COVERALLS_TOKEN -covermode=count -coverprofile=reports/coverage-all.coverprofile
